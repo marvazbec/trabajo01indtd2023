@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Primero cargamos el fichero R donde se encuentran todas las funciones que vamos a necesitar para hacer los ejercicios.
 ```{r}
-source("teoriadecision_funciones_incertidumbre.R")
+#source("teoriadecision_funciones_incertidumbre.R")
 ```
 
 ## Problema 1
@@ -36,7 +36,7 @@ Una vez que tenemos la tabla, vamos a ir aplicando cada criterio visto en clase 
 
 ```{r}
 waldb<-criterio.Wald(tabla1,favorable=TRUE)
-cat("La mejor alternativa según el criterio de Wald es la",waldb$AlternativaOptima)
+cat("La mejor alternativa según el criterio de Wald es la",waldb$AlternativaOptima,"siendo el valor óptimo el", waldb$ValorOptimo)
 
 
 ```
@@ -44,10 +44,31 @@ cat("La mejor alternativa según el criterio de Wald es la",waldb$AlternativaOpt
 
 ```{r}
 waldc<-criterio.Wald(tabla1,favorable=FALSE)
-cat("La mejor alternativa según el criterio de Wald es la",waldc$AlternativaOptima)
+cat("La mejor alternativa según el criterio de Wald es la",waldc$AlternativaOptima,"siendo el valor óptimo el", waldc$ValorOptimo)
 
 
 ```
+
+##### Criterio Optimista:
+
+*Beneficios:*
+
+```{r}
+optb<-criterio.Optimista(tabla1,favorable=TRUE)
+cat("La mejor alternativa según el criterio de optimista es la",optb$AlternativaOptima,"siendo el valor óptimo el",optb$ValorOptimo)
+
+
+```
+*Costos:*
+
+```{r}
+optc<-criterio.Optimista(tabla1,favorable=FALSE)
+cat("La mejor alternativa según el criterio de optimista es la",optc$AlternativaOptima,"siendo el valor óptimo el",optc$ValorOptimo)
+
+
+```
+
+
 
 
 
