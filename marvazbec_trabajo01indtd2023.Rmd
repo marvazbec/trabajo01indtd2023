@@ -9,22 +9,46 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+### TRABAJO INDIVIDUAL
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+Primero cargamos el fichero R donde se encuentran todas las funciones que vamos a necesitar para hacer los ejercicios.
+```{r}
+source("teoriadecision_funciones_incertidumbre.R")
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+## Problema 1
+Como vamos hacer una tabla con números aleatorios fijamos una semilla para que siempre nos salgan los mismos.
+```{r}
+set.seed(1234)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Creamos nuestra tabla de decisión con 7 alternativas y 4 estados.
+```{r}
+tabla1 <- crea.tablaX(rnorm(7*4,mean=20,sd=15), 7, 4)
+tabla1
+```
+
+Una vez que tenemos la tabla, vamos a ir aplicando cada criterio visto en clase tratando la tabla primero como beneficios y luego como costos.
+
+##### Criterio de Wald:
+
+*Beneficios:*
+
+```{r}
+waldb<-criterio.Wald(tabla1,favorable=TRUE)
+cat("La mejor alternativa según el criterio de Wald es la",waldb$AlternativaOptima)
+
+
+```
+*Costos:*
+
+```{r}
+waldc<-criterio.Wald(tabla1,favorable=FALSE)
+cat("La mejor alternativa según el criterio de Wald es la",waldc$AlternativaOptima)
+
+
+```
+
+
+
+
