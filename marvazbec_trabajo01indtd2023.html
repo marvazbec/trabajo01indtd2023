@@ -543,6 +543,71 @@ cat(&quot;La mejor alternativa según el criterio de Punto Ideal es la&quot;,PIc
 <pre><code>## La mejor alternativa según el criterio de Punto Ideal es la 3 siendo el valor óptimo el 24.50715</code></pre>
 </div>
 </div>
+<div id="problema-2" class="section level2">
+<h2>Problema 2</h2>
+<p>María y Daniel están buscando una hacienda para celebrar su boda, su
+mayor ilusión es celebrarla al aire libre, pero no saben si el día de su
+boda lloverá o no. Están en duda con tres Haciendas que les ofrecen las
+siguientes condiciones:</p>
+<p>-“Hacienda Don Quijote”: Esta hacienda es amplia y ofrece un espacio
+muy bonito para la boda al aire libre. El costo de alquiler de la
+hacienda es de 2000 euros en el exterior. El catering que proporciona la
+hacienda es de 150 euros por persona con la barra libre incluida durante
+las horas que los novio quieran. Si llueve tendría un coste adicional de
+500 euros para montar el salón interior.</p>
+<p>-“Hacienda Rinconete y Cortadillo”: Esta hacienda tiene un amplio
+interior. El alquiler del salón interior es de 2500 euros, pero si
+quieren celebrarlo en la parte exterior el alquiler sería de 4000. El
+catering que proporciona la hacienda es de 120 euros por persona y la
+barra libre tiene un costo de 150 euros la hora.</p>
+<p>-“Hacienda La Celestina”: Esta hacienda sólo tiene opción de
+celebrarla en el exterior con un coste de alquiler de 500 euros, pero si
+llueve tiene un coste adicional de 3000 euros para montar una carpa
+resistente en el exterior. El catering que proporciona la hacienda es de
+125 euros por persona y la barra libre tiene un costo de 350 euros por 4
+horas y cada hora adicional que quieran añadir los novios a la barra
+libre sería de 165 euros la hora.</p>
+<p>Si María Y Daniel tienen 300 invitados a la boda y quieren 7 horas de
+barra libre. ¿Que hacienda deberían escoger para minimizar el costo?</p>
+<p>Planteamiento: * Una única decisión entre dos personas. * Tabla de
+decisión: costos (desfavorable) * Alternativas: * d1 = “Hacienda Don
+Quijote” * d2 = “Hacienda Rinconete y Cortadillo” * d3 = “Hacienda La
+Celestina” * Estados de la naturaleza: * e1 = “No llueve” * e2 =
+“Llueve” * Matriz de decisión:</p>
+<pre class="r"><code>m11 &lt;- 2000 + 150*300
+m12 &lt;- 2000 + 150*300 + 500
+m21 &lt;- 4000 + 120*300 + 150*7
+m22 &lt;- 2500 + 120*300 + 150*7
+m31 &lt;- 500 + 125*300 + 350 + 165*3
+m32 &lt;- 500 + 125*300 + 350 + 165*3 + 3000
+
+tabla2 &lt;- crea.tablaX(c(m11,m12,
+                      m21,m22,
+                      m31,m32), numalternativas = 3, numestados = 2)
+rownames(tabla2) &lt;- c(&quot;Hacienda Don Quijote&quot;,&quot;Hacienda Rinconete y Cortadillo&quot;,&quot;Hacienda La Celestina&quot;)
+colnames(tabla2) &lt;- c(&quot;No llueve&quot;,&quot;Llueve&quot;)
+tabla2</code></pre>
+<pre><code>##                                 No llueve Llueve
+## Hacienda Don Quijote                47000  47500
+## Hacienda Rinconete y Cortadillo     41050  39550
+## Hacienda La Celestina               38845  41845</code></pre>
+<pre class="r"><code>sol&lt;-criterio.Todos(tabla2,0.5,F)
+sol[4,-c(1,2)]</code></pre>
+<pre><code>##                                               Wald             Optimista
+## iAlt.Opt (Desfav.) Hacienda Rinconete y Cortadillo Hacienda La Celestina
+##                                            Hurwicz
+## iAlt.Opt (Desfav.) Hacienda Rinconete y Cortadillo
+##                                             Savage
+## iAlt.Opt (Desfav.) Hacienda Rinconete y Cortadillo
+##                                            Laplace
+## iAlt.Opt (Desfav.) Hacienda Rinconete y Cortadillo
+##                                        Punto Ideal
+## iAlt.Opt (Desfav.) Hacienda Rinconete y Cortadillo</code></pre>
+<p>Según el criterio optimista María Y Daniel deberían escoger la
+<em>Hacienda La Celestina</em> , pero según el resto de criterio María y
+Daniel deberían de escoger la <em>Hacienda Rinconete y
+Cortadillo</em>.</p>
+</div>
 
 
 
