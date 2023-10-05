@@ -14,17 +14,21 @@ knitr::opts_chunk$set(echo = TRUE)
 ### TRABAJO INDIVIDUAL
 
 Primero cargamos el fichero R donde se encuentran todas las funciones que vamos a necesitar para hacer los ejercicios.
+
 ```{r}
 source("teoriadecision_funciones_incertidumbre.R")
 ```
 
 ## Problema 1
+
 Como vamos hacer una tabla con números aleatorios fijamos una semilla para que siempre nos salgan los mismos.
+
 ```{r}
 set.seed(1234)
 ```
 
 Creamos nuestra tabla de decisión con 7 alternativas y 4 estados.
+
 ```{r}
 tabla1 <- crea.tablaX(rnorm(7*4,mean=20,sd=15), 7, 4)
 knitr::kable(tabla1)
@@ -34,8 +38,7 @@ Una vez que tenemos la tabla, vamos a ir aplicando cada criterio visto en clase 
 
 ##### Criterio de Wald:
 
-
-###### *Beneficios:*
+- Beneficios:
 
 ```{r}
 waldb<-criterio.Wald(tabla1,favorable=TRUE)
@@ -43,7 +46,8 @@ cat("La mejor alternativa según el criterio de Wald es la",waldb$AlternativaOpt
 
 
 ```
-###### *Costos:*
+
+- Costos:
 
 ```{r}
 waldc<-criterio.Wald(tabla1,favorable=FALSE)
@@ -54,8 +58,7 @@ cat("La mejor alternativa según el criterio de Wald es la",waldc$AlternativaOpt
 
 ##### Criterio Optimista:
 
-
-###### *Beneficios:*
+- Beneficios:
 
 ```{r}
 optb<-criterio.Optimista(tabla1,favorable=TRUE)
@@ -63,7 +66,8 @@ cat("La mejor alternativa según el criterio de optimista es la",optb$Alternativ
 
 
 ```
-###### *Costos:*
+
+- Costos:
 
 ```{r}
 optc<-criterio.Optimista(tabla1,favorable=FALSE)
@@ -72,11 +76,9 @@ cat("La mejor alternativa según el criterio de optimista es la",optc$Alternativ
 
 ```
 
-
 ##### Criterio de Hurwicz:
 
-
-###### *Beneficios:*
+- Beneficios:
 
 ```{r}
 Hurb<-dibuja.criterio.Hurwicz_Intervalos(tabla1,favorable=TRUE)
@@ -84,7 +86,8 @@ knitr::kable(Hurb$IntervalosAlfa)
 cat("Las mejores alterantivas según el critero de Hurwicz son",Hurb$AltOptimas, "dependiendo del alfa que eligamos, podemos observar los intervalos en la tabla de arriba.")
 
 ```
-###### *Costos:*
+
+- Costos:
 
 ```{r}
 Hurc<-dibuja.criterio.Hurwicz_Intervalos(tabla1,favorable=FALSE)
@@ -94,11 +97,9 @@ cat("Las mejores alterantivas según el critero de Hurwicz son",Hurc$AltOptimas,
 
 ```
 
-
 ##### Criterio Savage:
 
-
-###### *Beneficios:*
+- Beneficios:
 
 ```{r}
 savb<-criterio.Savage(tabla1,favorable=TRUE)
@@ -106,7 +107,8 @@ cat("La mejor alternativa según el criterio de Savage es la",savb$AlternativaOp
 
 
 ```
-###### *Costos:*
+
+- Costos:
 
 ```{r}
 savc<-criterio.Savage(tabla1,favorable=FALSE)
@@ -117,8 +119,7 @@ cat("La mejor alternativa según el criterio de Savage es la",savc$AlternativaOp
 
 ##### Criterio de LaPlace:
 
-
-###### *Beneficios:*
+- Beneficios:
 
 ```{r}
 LPb<-criterio.Laplace(tabla1,favorable=TRUE)
@@ -126,7 +127,8 @@ cat("La mejor alternativa según el criterio de LaPlace es la",LPb$AlternativaOp
 
 
 ```
-###### *Costos:*
+
+- Costos:
 
 ```{r}
 LPc<-criterio.Laplace(tabla1,favorable=F)
@@ -135,10 +137,9 @@ cat("La mejor alternativa según el criterio de LaPlace es la",LPc$AlternativaOp
 
 ```
 
-##### Criterio de Punto Ideal: 
+##### Criterio de Punto Ideal:
 
-
-###### *Beneficios:*
+- Beneficios:
 
 ```{r}
 PIb<-criterio.PuntoIdeal(tabla1,favorable=TRUE)
@@ -146,7 +147,8 @@ cat("La mejor alternativa según el criterio de Punto Ideal es la",PIb$Alternati
 
 
 ```
-###### *Costos:*
+
+- Costos:
 
 ```{r}
 PIc<-criterio.PuntoIdeal(tabla1,favorable=F)
@@ -157,28 +159,29 @@ cat("La mejor alternativa según el criterio de Punto Ideal es la",PIc$Alternati
 
 ## Problema 2
 
-María y Daniel están buscando una hacienda para celebrar su boda, su mayor ilusión es celebrarla al aire libre, pero no saben si el día de su boda lloverá o no.
-Están en duda con tres Haciendas que les ofrecen las siguientes condiciones:
+María y Daniel están buscando una hacienda para celebrar su boda, su mayor ilusión es celebrarla al aire libre, pero no saben si el día de su boda lloverá o no. Están en duda con tres Haciendas que les ofrecen las siguientes condiciones:
 
--"Hacienda Don Quijote": Esta hacienda es amplia y ofrece un espacio muy bonito para la boda al aire libre. El costo de alquiler de la hacienda es de 2000 euros en el exterior. El catering que proporciona la hacienda es de 150 euros por persona con la barra libre incluida durante las horas que los novio quieran. Si llueve tendría un coste adicional de 500 euros para montar el salón interior.
+-   "Hacienda Don Quijote": Esta hacienda es amplia y ofrece un espacio muy bonito para la boda al aire libre. El costo de alquiler de la hacienda es de 2000 euros en el exterior. El catering que proporciona la hacienda es de 150 euros por persona con la barra libre incluida durante las horas que los novio quieran. Si llueve tendría un coste adicional de 500 euros para montar el salón interior.
 
--"Hacienda Rinconete y Cortadillo": Esta hacienda tiene un amplio interior. El alquiler del salón interior es de 2500 euros, pero si quieren celebrarlo en la parte exterior el alquiler sería de 4000. El catering que proporciona la hacienda es de 120 euros por persona y la barra libre tiene un costo de 150 euros la hora.
+-   "Hacienda Rinconete y Cortadillo": Esta hacienda tiene un amplio interior. El alquiler del salón interior es de 2500 euros, pero si quieren celebrarlo en la parte exterior el alquiler sería de 4000. El catering que proporciona la hacienda es de 120 euros por persona y la barra libre tiene un costo de 150 euros la hora.
 
--"Hacienda La Celestina": Esta hacienda sólo tiene opción de celebrarla en el exterior con un coste de alquiler de 500 euros, pero si llueve tiene un coste adicional de 3000 euros para montar una carpa resistente en el exterior. El catering que proporciona la hacienda es de 125 euros por persona y la barra libre tiene un costo de 350 euros por 4 horas y cada hora adicional que quieran añadir los novios a la barra libre sería de 165 euros la hora.
+-   "Hacienda La Celestina": Esta hacienda sólo tiene opción de celebrarla en el exterior con un coste de alquiler de 500 euros, pero si llueve tiene un coste adicional de 3000 euros para montar una carpa resistente en el exterior. El catering que proporciona la hacienda es de 125 euros por persona y la barra libre tiene un costo de 350 euros por 4 horas y cada hora adicional que quieran añadir los novios a la barra libre sería de 165 euros la hora.
 
 Si María Y Daniel tienen 300 invitados a la boda y quieren 7 horas de barra libre. ¿Que hacienda deberían escoger para minimizar el costo?
 
 Planteamiento:
-* Una única decisión entre dos personas.
-* Tabla de decisión: costos (desfavorable)
-* Alternativas:
-  * d1 = "Hacienda Don Quijote"
-  * d2 = "Hacienda Rinconete y Cortadillo"
-  * d3 = "Hacienda La Celestina"
-* Estados de la naturaleza:
-  * e1 = "No llueve"
-  * e2 = "Llueve"
-* Matriz de decisión:
+
+-   Una única decisión entre dos personas.
+-   Tabla de decisión: costos (desfavorable)
+-   Alternativas:
+    -   d1 = "Hacienda Don Quijote"
+    -   d2 = "Hacienda Rinconete y Cortadillo"
+    -   d3 = "Hacienda La Celestina"
+-   Estados de la naturaleza:
+-   e1 = "No llueve"
+-   e2 ="Llueve"
+
+Matriz de decisión:
 
 ```{r}
 m11 <- 2000 + 150*300
@@ -198,4 +201,4 @@ sol<-criterio.Todos(tabla2,0.5,F)
 knitr::kable(sol[4,-c(1,2)])
 ```
 
-Según el criterio optimista María Y Daniel deberían escoger la *Hacienda La Celestina* , pero según el resto de criterios María y Daniel deberían de escoger la *Hacienda  Rinconete y Cortadillo*.
+Según el criterio optimista María y Daniel deberían escoger la *Hacienda La Celestina* , pero según el resto de criterios María y Daniel deberían de escoger la *Hacienda Rinconete y Cortadillo*.
