@@ -34,6 +34,7 @@ Una vez que tenemos la tabla, vamos a ir aplicando cada criterio visto en clase 
 
 ##### Criterio de Wald:
 
+
 *Beneficios:*
 
 ```{r}
@@ -52,6 +53,7 @@ cat("La mejor alternativa según el criterio de Wald es la",waldc$AlternativaOpt
 ```
 
 ##### Criterio Optimista:
+
 
 *Beneficios:*
 
@@ -72,6 +74,7 @@ cat("La mejor alternativa según el criterio de optimista es la",optc$Alternativ
 
 
 ##### Criterio de Hurwicz:
+
 
 *Beneficios:*
 
@@ -94,6 +97,7 @@ cat("Las mejores alterantivas según el critero de Hurwicz son",Hurc$AltOptimas,
 
 ##### Criterio Savage:
 
+
 *Beneficios:*
 
 ```{r}
@@ -113,6 +117,7 @@ cat("La mejor alternativa según el criterio de Savage es la",savc$AlternativaOp
 
 ##### Criterio de LaPlace:
 
+
 *Beneficios:*
 
 ```{r}
@@ -130,7 +135,8 @@ cat("La mejor alternativa según el criterio de LaPlace es la",LPc$AlternativaOp
 
 ```
 
-##### Criterio de Punto Ideal:
+##### Criterio de Punto Ideal: 
+
 
 *Beneficios:*
 
