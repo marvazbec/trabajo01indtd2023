@@ -35,7 +35,7 @@ Una vez que tenemos la tabla, vamos a ir aplicando cada criterio visto en clase 
 ##### Criterio de Wald:
 
 
-########*Beneficios:*
+###### *Beneficios:*
 
 ```{r}
 waldb<-criterio.Wald(tabla1,favorable=TRUE)
@@ -43,7 +43,7 @@ cat("La mejor alternativa según el criterio de Wald es la",waldb$AlternativaOpt
 
 
 ```
-########*Costos:*
+###### *Costos:*
 
 ```{r}
 waldc<-criterio.Wald(tabla1,favorable=FALSE)
@@ -55,7 +55,7 @@ cat("La mejor alternativa según el criterio de Wald es la",waldc$AlternativaOpt
 ##### Criterio Optimista:
 
 
-########*Beneficios:*
+###### *Beneficios:*
 
 ```{r}
 optb<-criterio.Optimista(tabla1,favorable=TRUE)
@@ -63,7 +63,7 @@ cat("La mejor alternativa según el criterio de optimista es la",optb$Alternativ
 
 
 ```
-########*Costos:*
+###### *Costos:*
 
 ```{r}
 optc<-criterio.Optimista(tabla1,favorable=FALSE)
@@ -76,7 +76,7 @@ cat("La mejor alternativa según el criterio de optimista es la",optc$Alternativ
 ##### Criterio de Hurwicz:
 
 
-########*Beneficios:*
+###### *Beneficios:*
 
 ```{r}
 Hurb<-dibuja.criterio.Hurwicz_Intervalos(tabla1,favorable=TRUE)
@@ -84,7 +84,7 @@ knitr::kable(Hurb$IntervalosAlfa)
 cat("Las mejores alterantivas según el critero de Hurwicz son",Hurb$AltOptimas, "dependiendo del alfa que eligamos, podemos observar los intervalos en la tabla de arriba.")
 
 ```
-########*Costos:*
+###### *Costos:*
 
 ```{r}
 Hurc<-dibuja.criterio.Hurwicz_Intervalos(tabla1,favorable=FALSE)
@@ -98,7 +98,7 @@ cat("Las mejores alterantivas según el critero de Hurwicz son",Hurc$AltOptimas,
 ##### Criterio Savage:
 
 
-########*Beneficios:*
+###### *Beneficios:*
 
 ```{r}
 savb<-criterio.Savage(tabla1,favorable=TRUE)
@@ -106,7 +106,7 @@ cat("La mejor alternativa según el criterio de Savage es la",savb$AlternativaOp
 
 
 ```
-########*Costos:*
+###### *Costos:*
 
 ```{r}
 savc<-criterio.Savage(tabla1,favorable=FALSE)
@@ -118,7 +118,7 @@ cat("La mejor alternativa según el criterio de Savage es la",savc$AlternativaOp
 ##### Criterio de LaPlace:
 
 
-########*Beneficios:*
+###### *Beneficios:*
 
 ```{r}
 LPb<-criterio.Laplace(tabla1,favorable=TRUE)
@@ -126,7 +126,7 @@ cat("La mejor alternativa según el criterio de LaPlace es la",LPb$AlternativaOp
 
 
 ```
-########*Costos:*
+###### *Costos:*
 
 ```{r}
 LPc<-criterio.Laplace(tabla1,favorable=F)
@@ -138,7 +138,7 @@ cat("La mejor alternativa según el criterio de LaPlace es la",LPc$AlternativaOp
 ##### Criterio de Punto Ideal: 
 
 
-########*Beneficios:*
+###### *Beneficios:*
 
 ```{r}
 PIb<-criterio.PuntoIdeal(tabla1,favorable=TRUE)
@@ -146,7 +146,7 @@ cat("La mejor alternativa según el criterio de Punto Ideal es la",PIb$Alternati
 
 
 ```
-########*Costos:*
+###### *Costos:*
 
 ```{r}
 PIc<-criterio.PuntoIdeal(tabla1,favorable=F)
