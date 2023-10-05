@@ -586,23 +586,68 @@ tabla2 &lt;- crea.tablaX(c(m11,m12,
                       m31,m32), numalternativas = 3, numestados = 2)
 rownames(tabla2) &lt;- c(&quot;Hacienda Don Quijote&quot;,&quot;Hacienda Rinconete y Cortadillo&quot;,&quot;Hacienda La Celestina&quot;)
 colnames(tabla2) &lt;- c(&quot;No llueve&quot;,&quot;Llueve&quot;)
-tabla2</code></pre>
-<pre><code>##                                 No llueve Llueve
-## Hacienda Don Quijote                47000  47500
-## Hacienda Rinconete y Cortadillo     41050  39550
-## Hacienda La Celestina               38845  41845</code></pre>
+knitr::kable(tabla2)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">No llueve</th>
+<th align="right">Llueve</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Hacienda Don Quijote</td>
+<td align="right">47000</td>
+<td align="right">47500</td>
+</tr>
+<tr class="even">
+<td align="left">Hacienda Rinconete y Cortadillo</td>
+<td align="right">41050</td>
+<td align="right">39550</td>
+</tr>
+<tr class="odd">
+<td align="left">Hacienda La Celestina</td>
+<td align="right">38845</td>
+<td align="right">41845</td>
+</tr>
+</tbody>
+</table>
 <pre class="r"><code>sol&lt;-criterio.Todos(tabla2,0.5,F)
-sol[4,-c(1,2)]</code></pre>
-<pre><code>##                                               Wald             Optimista
-## iAlt.Opt (Desfav.) Hacienda Rinconete y Cortadillo Hacienda La Celestina
-##                                            Hurwicz
-## iAlt.Opt (Desfav.) Hacienda Rinconete y Cortadillo
-##                                             Savage
-## iAlt.Opt (Desfav.) Hacienda Rinconete y Cortadillo
-##                                            Laplace
-## iAlt.Opt (Desfav.) Hacienda Rinconete y Cortadillo
-##                                        Punto Ideal
-## iAlt.Opt (Desfav.) Hacienda Rinconete y Cortadillo</code></pre>
+knitr::kable(sol[4,-c(1,2)])</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="9%" />
+<col width="15%" />
+<col width="10%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Wald</th>
+<th align="left">Optimista</th>
+<th align="left">Hurwicz</th>
+<th align="left">Savage</th>
+<th align="left">Laplace</th>
+<th align="left">Punto Ideal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">iAlt.Opt (Desfav.)</td>
+<td align="left">Hacienda Rinconete y Cortadillo</td>
+<td align="left">Hacienda La Celestina</td>
+<td align="left">Hacienda Rinconete y Cortadillo</td>
+<td align="left">Hacienda Rinconete y Cortadillo</td>
+<td align="left">Hacienda Rinconete y Cortadillo</td>
+<td align="left">Hacienda Rinconete y Cortadillo</td>
+</tr>
+</tbody>
+</table>
 <p>Según el criterio optimista María Y Daniel deberían escoger la
 <em>Hacienda La Celestina</em> , pero según el resto de criterio María y
 Daniel deberían de escoger la <em>Hacienda Rinconete y

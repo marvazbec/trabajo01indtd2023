@@ -1,8 +1,10 @@
 ---
 title: "Trabajo01"
 author: "María Vázquez de la Torre Becerra"
-date: '2023-10-04'
-output: html_document
+date: "2023-10-04"
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -185,9 +187,9 @@ tabla2 <- crea.tablaX(c(m11,m12,
                       m31,m32), numalternativas = 3, numestados = 2)
 rownames(tabla2) <- c("Hacienda Don Quijote","Hacienda Rinconete y Cortadillo","Hacienda La Celestina")
 colnames(tabla2) <- c("No llueve","Llueve")
-tabla2
+knitr::kable(tabla2)
 sol<-criterio.Todos(tabla2,0.5,F)
-sol[4,-c(1,2)]
+knitr::kable(sol[4,-c(1,2)])
 ```
 
-Según el criterio optimista María Y Daniel deberían escoger la *Hacienda La Celestina* , pero según el resto de criterio María y Daniel deberían de escoger la *Hacienda  Rinconete y Cortadillo*.
+Según el criterio optimista María Y Daniel deberían escoger la *Hacienda La Celestina* , pero según el resto de criterios María y Daniel deberían de escoger la *Hacienda  Rinconete y Cortadillo*.
