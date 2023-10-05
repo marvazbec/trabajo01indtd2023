@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Primero cargamos el fichero R donde se encuentran todas las funciones que vamos a necesitar para hacer los ejercicios.
 ```{r}
-#source("teoriadecision_funciones_incertidumbre.R")
+source("teoriadecision_funciones_incertidumbre.R")
 ```
 
 ## Problema 1
@@ -25,7 +25,7 @@ set.seed(1234)
 Creamos nuestra tabla de decisión con 7 alternativas y 4 estados.
 ```{r}
 tabla1 <- crea.tablaX(rnorm(7*4,mean=20,sd=15), 7, 4)
-tabla1
+knitr::kable(tabla1)
 ```
 
 Una vez que tenemos la tabla, vamos a ir aplicando cada criterio visto en clase tratando la tabla primero como beneficios y luego como costos.
@@ -69,7 +69,81 @@ cat("La mejor alternativa según el criterio de optimista es la",optc$Alternativ
 ```
 
 
+##### Criterio de Hurwicz:
+
+*Beneficios:*
+
+```{r}
+Hurb<-dibuja.criterio.Hurwicz_Intervalos(tabla1,favorable=TRUE)
+knitr::kable(Hurb$IntervalosAlfa)
+cat("Las mejores alterantivas según el critero de Hurwicz son",Hurb$AltOptimas, "dependiendo del alfa que eligamos, podemos observar los intervalos en la tabla de arriba.")
+
+```
+*Costos:*
+
+```{r}
+Hurc<-dibuja.criterio.Hurwicz_Intervalos(tabla1,favorable=FALSE)
+knitr::kable(Hurc$IntervalosAlfa)
+cat("Las mejores alterantivas según el critero de Hurwicz son",Hurc$AltOptimas, "dependiendo del alfa que eligamos, podemos observar los intervalos en la tabla de arriba.")
 
 
+```
 
+
+##### Criterio Savage:
+
+*Beneficios:*
+
+```{r}
+savb<-criterio.Savage(tabla1,favorable=TRUE)
+cat("La mejor alternativa según el criterio de Savage es la",savb$AlternativaOptima,"siendo el valor óptimo el",savb$ValorOptimo)
+
+
+```
+*Costos:*
+
+```{r}
+savc<-criterio.Savage(tabla1,favorable=FALSE)
+cat("La mejor alternativa según el criterio de Savage es la",savc$AlternativaOptima,"siendo el valor óptimo el",savc$ValorOptimo)
+
+
+```
+
+##### Criterio de LaPlace:
+
+*Beneficios:*
+
+```{r}
+LPb<-criterio.Laplace(tabla1,favorable=TRUE)
+cat("La mejor alternativa según el criterio de LaPlace es la",LPb$AlternativaOptima,"siendo el valor óptimo el",LPb$ValorOptimo)
+
+
+```
+*Costos:*
+
+```{r}
+LPc<-criterio.Laplace(tabla1,favorable=F)
+cat("La mejor alternativa según el criterio de LaPlace es la",LPc$AlternativaOptima,"siendo el valor óptimo el",LPc$ValorOptimo)
+
+
+```
+
+##### Criterio de Punto Ideal:
+
+*Beneficios:*
+
+```{r}
+PIb<-criterio.PuntoIdeal(tabla1,favorable=TRUE)
+cat("La mejor alternativa según el criterio de Punto Ideal es la",PIb$AlternativaOptima,"siendo el valor óptimo el",PIb$ValorOptimo)
+
+
+```
+*Costos:*
+
+```{r}
+PIc<-criterio.PuntoIdeal(tabla1,favorable=F)
+cat("La mejor alternativa según el criterio de Punto Ideal es la",PIc$AlternativaOptima,"siendo el valor óptimo el",PIc$ValorOptimo)
+
+
+```
 
