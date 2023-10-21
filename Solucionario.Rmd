@@ -8,7 +8,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = F)
 ```
 
 ### TRABAJO INDIVIDUAL
@@ -20,7 +20,6 @@ source("teoriadecision_funciones_incertidumbre.R")
 ```
 
 ## Problema 1
-
 Como vamos hacer una tabla con números aleatorios fijamos una semilla para que siempre nos salgan los mismos.
 
 ```{r}
@@ -42,19 +41,18 @@ Una vez que tenemos la tabla, vamos a ir aplicando cada criterio visto en clase 
 
 ```{r}
 waldb<-criterio.Wald(tabla1,favorable=TRUE)
-cat("La mejor alternativa según el criterio de Wald es la",waldb$AlternativaOptima,"siendo el valor óptimo el", waldb$ValorOptimo)
-
-
 ```
+La mejor alternativa según el criterio de Wald es la `r waldb$AlternativaOptima `
+siendo el valor óptimo el `r waldb$ValorOptimo`
 
 - Costos:
 
 ```{r}
 waldc<-criterio.Wald(tabla1,favorable=FALSE)
-cat("La mejor alternativa según el criterio de Wald es la",waldc$AlternativaOptima,"siendo el valor óptimo el", waldc$ValorOptimo)
-
 
 ```
+La mejor alternativa según el criterio de Wald es la `r waldc$AlternativaOptima `
+siendo el valor óptimo el `r waldc$ValorOptimo` 
 
 ##### Criterio Optimista:
 
@@ -62,19 +60,18 @@ cat("La mejor alternativa según el criterio de Wald es la",waldc$AlternativaOpt
 
 ```{r}
 optb<-criterio.Optimista(tabla1,favorable=TRUE)
-cat("La mejor alternativa según el criterio de optimista es la",optb$AlternativaOptima,"siendo el valor óptimo el",optb$ValorOptimo)
-
 
 ```
+La mejor alternativa según el criterio optimista es la `r optb$AlternativaOptima `
+siendo el valor óptimo el `r optb$ValorOptimo`
 
 - Costos:
 
 ```{r}
 optc<-criterio.Optimista(tabla1,favorable=FALSE)
-cat("La mejor alternativa según el criterio de optimista es la",optc$AlternativaOptima,"siendo el valor óptimo el",optc$ValorOptimo)
-
-
 ```
+La mejor alternativa según el criterio optimista es la `r optc$AlternativaOptima `
+siendo el valor óptimo el `r optc$ValorOptimo`
 
 ##### Criterio de Hurwicz:
 
@@ -83,19 +80,18 @@ cat("La mejor alternativa según el criterio de optimista es la",optc$Alternativ
 ```{r}
 Hurb<-dibuja.criterio.Hurwicz_Intervalos(tabla1,favorable=TRUE)
 knitr::kable(Hurb$IntervalosAlfa)
-cat("Las mejores alterantivas según el critero de Hurwicz son",Hurb$AltOptimas, "dependiendo del alfa que eligamos, podemos observar los intervalos en la tabla de arriba.")
-
 ```
+Las mejores alterantivas según el critero de Hurwicz son `r Hurb$AltOptimas`, 
+dependiendo del alfa que eligamos, podemos observar los intervalos en la tabla de arriba.
 
 - Costos:
 
 ```{r}
 Hurc<-dibuja.criterio.Hurwicz_Intervalos(tabla1,favorable=FALSE)
 knitr::kable(Hurc$IntervalosAlfa)
-cat("Las mejores alterantivas según el critero de Hurwicz son",Hurc$AltOptimas, "dependiendo del alfa que eligamos, podemos observar los intervalos en la tabla de arriba.")
-
-
 ```
+Las mejores alterantivas según el critero de Hurwicz son `r Hurc$AltOptimas`, 
+dependiendo del alfa que eligamos, podemos observar los intervalos en la tabla de arriba.
 
 ##### Criterio Savage:
 
@@ -103,19 +99,17 @@ cat("Las mejores alterantivas según el critero de Hurwicz son",Hurc$AltOptimas,
 
 ```{r}
 savb<-criterio.Savage(tabla1,favorable=TRUE)
-cat("La mejor alternativa según el criterio de Savage es la",savb$AlternativaOptima,"siendo el valor óptimo el",savb$ValorOptimo)
-
-
 ```
+La mejor alternativa según el criterio de Savage es la `r savb$AlternativaOptima`,
+siendo el valor óptimo el `r savb$ValorOptimo`.
 
 - Costos:
 
 ```{r}
 savc<-criterio.Savage(tabla1,favorable=FALSE)
-cat("La mejor alternativa según el criterio de Savage es la",savc$AlternativaOptima,"siendo el valor óptimo el",savc$ValorOptimo)
-
-
 ```
+La mejor alternativa según el criterio de Savage es la `r savc$AlternativaOptima`,
+siendo el valor óptimo el `r savc$ValorOptimo`. 
 
 ##### Criterio de LaPlace:
 
@@ -123,19 +117,18 @@ cat("La mejor alternativa según el criterio de Savage es la",savc$AlternativaOp
 
 ```{r}
 LPb<-criterio.Laplace(tabla1,favorable=TRUE)
-cat("La mejor alternativa según el criterio de LaPlace es la",LPb$AlternativaOptima,"siendo el valor óptimo el",LPb$ValorOptimo)
-
-
 ```
+La mejor alternativa según el criterio de LaPlace es la `r LPb$AlternativaOptima`,
+siendo el valor óptimo el `r LPb$ValorOptimo`.
 
 - Costos:
 
 ```{r}
 LPc<-criterio.Laplace(tabla1,favorable=F)
-cat("La mejor alternativa según el criterio de LaPlace es la",LPc$AlternativaOptima,"siendo el valor óptimo el",LPc$ValorOptimo)
-
 
 ```
+La mejor alternativa según el criterio de LaPlace es la `r LPc$AlternativaOptima`,
+siendo el valor óptimo el `r LPc$ValorOptimo`.
 
 ##### Criterio de Punto Ideal:
 
@@ -143,21 +136,19 @@ cat("La mejor alternativa según el criterio de LaPlace es la",LPc$AlternativaOp
 
 ```{r}
 PIb<-criterio.PuntoIdeal(tabla1,favorable=TRUE)
-cat("La mejor alternativa según el criterio de Punto Ideal es la",PIb$AlternativaOptima,"siendo el valor óptimo el",PIb$ValorOptimo)
-
-
 ```
+La mejor alternativa según el criterio de Punto Ideal es la `r PIb$AlternativaOptima`,
+siendo el valor óptimo el `r PIb$ValorOptimo`.
 
 - Costos:
 
 ```{r}
 PIc<-criterio.PuntoIdeal(tabla1,favorable=F)
-cat("La mejor alternativa según el criterio de Punto Ideal es la",PIc$AlternativaOptima,"siendo el valor óptimo el",PIc$ValorOptimo)
-
-
 ```
+La mejor alternativa según el criterio de Punto Ideal es la `r PIc$AlternativaOptima`,
+siendo el valor óptimo el `r PIc$ValorOptimo`.
 
-## Problema 2
+## Problema 2 \newline
 
 María y Daniel están buscando una hacienda para celebrar su boda, su mayor ilusión es celebrarla al aire libre, pero no saben si el día de su boda lloverá o no. Están en duda con tres Haciendas que les ofrecen las siguientes condiciones:
 
@@ -178,8 +169,8 @@ Planteamiento:
     -   d2 = "Hacienda Rinconete y Cortadillo"
     -   d3 = "Hacienda La Celestina"
 -   Estados de la naturaleza:
--   e1 = "No llueve"
--   e2 ="Llueve"
+    -   e1 = "No llueve"
+    -   e2 ="Llueve"
 
 Matriz de decisión:
 
