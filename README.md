@@ -6,10 +6,17 @@ En esta trabajo se han llevado acabo dos problemas:
  -El segundo problema ha sido un problema "real" inventado y que también le hemos aplicado todos los criterios vistos en clase para ver cuál sería la mejor alternativa. En este problema la tabla era una tabla de costos.
  
 El repositorio contiene los siguientes ficheros:
+
   -Fichero Enunciados.Rmd: fichero que genera el documento con los enunciados.
+  
   -Fichero Solucionario.Rmd: fichero que genera el documento con las soluciones.
+  
   -Fichero README: este fichero.
+  
   -Ficheros PDF: documentos finales de enunciados y soluciones.
+  
   -Proyecto Rstudio
-  -Archivo r donde se encuentran las funciones creadas por el profesor para poder cargarlas en los distintos documentos (teoriadecision_funciones_incertidumbre.r)
+  
+  -Archivo r donde se encuentran las funciones creadas por el profesor para poder cargarlas en los distintos documentos (teoriadecision_funciones_incertidumbre.R)
+  
  Este trabajo ha sido realizado por María Vázquez de la Torre Becerra.
